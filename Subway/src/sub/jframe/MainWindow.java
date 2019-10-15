@@ -110,11 +110,17 @@ public class MainWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String line = jtf3.getText().trim();
-				for(int i=0;i<Data.lineSet.size();i++) {
-					if(!Data.lineSet.contains(line)) {
-						JOptionPane.showMessageDialog(null, "线路不存在", "错误",JOptionPane.ERROR_MESSAGE);
-						return;
-					}			
+				int f=1;
+				for(List<Station> l:Data.lineSet) {
+					for(int i=0;i<l.size();i++) {
+						if(l.get(i).getLine().equals(line)) {
+							f=0;
+						}	
+					}
+				}
+				if(f==1) {
+					JOptionPane.showMessageDialog(null, "站点不存在", "错误",JOptionPane.ERROR_MESSAGE);
+			        return;
 				}
 				String resultStr = "";
 				boolean iscontinue=false;
