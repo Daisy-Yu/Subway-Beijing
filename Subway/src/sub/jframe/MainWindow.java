@@ -33,23 +33,23 @@ public class MainWindow extends JFrame {
 	JButton jb1, jb2;
 	
 	public MainWindow() {
-		super("±±¾©µØÌú²éÑ¯ÏµÍ³");
+		super("åŒ—äº¬åœ°é“æŸ¥è¯¢ç³»ç»Ÿ");
 		this.setSize(800, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
 		addComponent();
 		setVisible(true);
-		setLocationRelativeTo(null);// Éè¾ÓÖĞÏÔÊ¾;
+		setLocationRelativeTo(null);// è®¾å±…ä¸­æ˜¾ç¤º;
 	}
 	
 	public void addComponent() {
-		// Ãæ°åÒ»
+		// é¢æ¿ä¸€
 		jp1 = new JPanel(new BorderLayout());
-		jl1 = new JLabel("ÊäÈëÆğÊ¼Õ¾µã£º");
+		jl1 = new JLabel("è¾“å…¥èµ·å§‹ç«™ç‚¹ï¼š");
 		jtf1 = new JTextField(14);
-		jl2 = new JLabel("ÊäÈë½áÊøÕ¾µã£º");
+		jl2 = new JLabel("è¾“å…¥ç»“æŸç«™ç‚¹ï¼š");
 		jtf2 = new JTextField(14);
-		jb1 = new JButton("²éÑ¯");
+		jb1 = new JButton("æŸ¥è¯¢");
 		jta1 = new JTextArea(20, 60);
 		jsp1 = new JScrollPane(jta1);
 		
@@ -60,19 +60,19 @@ public class MainWindow extends JFrame {
 				String startAddress = jtf1.getText().trim();
 				String endAddress = jtf2.getText().trim();
 				if(startAddress.equals(endAddress)) {
-					JOptionPane.showMessageDialog(null, "ÆğÊ¼Õ¾µãÓë½áÊøÕ¾µãÏàÍ¬", "´íÎó",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "èµ·å§‹ç«™ç‚¹ä¸ç»“æŸç«™ç‚¹ç›¸åŒ", "é”™è¯¯",JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 				int flag=1;
 				for(List<Station> l:Data.lineSet) {
 					for(int i=0;i<l.size();i++) {
-						if(l.get(i).getSname().equals(startAddress)&&l.get(i).getSname().equals(endAddress)) {
+						if(l.get(i).getSname().equals(startAddress)||l.get(i).getSname().equals(endAddress)) {
 							flag=0;
 						}	
 					}
 				}
 				if(flag==1) {
-					JOptionPane.showMessageDialog(null, "Õ¾µã²»´æÔÚ", "´íÎó",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "ç«™ç‚¹ä¸å­˜åœ¨", "é”™è¯¯",JOptionPane.ERROR_MESSAGE);
 			        return;
 				}	
 				String resultStr = "";
@@ -96,12 +96,12 @@ public class MainWindow extends JFrame {
 		jp1.add(jp3, "North");
 		jp1.add(jsp1, "Center");
 		
-		// Ãæ°å¶ş
+		// é¢æ¿äºŒ
 		jp2 = new JPanel(new BorderLayout());
 		
-		jl3 = new JLabel("ÊäÈëÏßÂ·Ãû³Æ£º");
+		jl3 = new JLabel("è¾“å…¥çº¿è·¯åç§°ï¼š");
 		jtf3 = new JTextField(10);
-		jb2 = new JButton("²éÑ¯");
+		jb2 = new JButton("æŸ¥è¯¢");
 		jta2 = new JTextArea(20, 60);
 		jsp2 = new JScrollPane(jta2);
 		
@@ -112,7 +112,7 @@ public class MainWindow extends JFrame {
 				String line = jtf3.getText().trim();
 				for(int i=0;i<Data.lineSet.size();i++) {
 					if(!Data.lineSet.contains(line)) {
-						JOptionPane.showMessageDialog(null, "ÏßÂ·²»´æÔÚ", "´íÎó",JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "çº¿è·¯ä¸å­˜åœ¨", "é”™è¯¯",JOptionPane.ERROR_MESSAGE);
 						return;
 					}			
 				}
@@ -145,8 +145,8 @@ public class MainWindow extends JFrame {
 		jsp2 = new JScrollPane(result);
 
 		jtp = new JTabbedPane();
-		jtp.addTab("×î¶ÌÂ·Ïß²éÑ¯", jp1);
-		jtp.addTab("ÏßÂ·Õ¾µã²éÑ¯", jp2);
+		jtp.addTab("æœ€çŸ­è·¯çº¿æŸ¥è¯¢", jp1);
+		jtp.addTab("çº¿è·¯ç«™ç‚¹æŸ¥è¯¢", jp2);
 
 		add(jtp);
 	}
